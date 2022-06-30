@@ -1,3 +1,3 @@
 # Onramper Validator
 
-To valudate frontend and backend gateway data
+To validate frontend and backend gateway data
