@@ -1,4 +1,3 @@
-// import { Gateway, ValidationStatus } from "./enums";
 import { rules } from "./rules";
 import React from "react";
 import * as helpers from "./helpers";
@@ -106,8 +105,8 @@ export class OnramperValidator {
     } else {
       return;
     }
-    // if (this.messagesShown || this.visibleFields.includes(field))
-    return element;
+    if (this.messagesShown || this.visibleFields.includes(field))
+      return element;
   }
 
   validateAll(data: any, gateway?: Gateway) {

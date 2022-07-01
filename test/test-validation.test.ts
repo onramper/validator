@@ -1,7 +1,7 @@
-import { OnramperValidator, isValidData, validate } from "../src";
+import { OnramperValidator, isValidData, validate, Gateway } from "../src";
 
 // const validator = new OnramperValidator();
-// console.log(validator.validateField("email", "abcd@gmailcom", Gateway.Moonpay));
+// console.log(validator.validateField("email", "abcdg@mail.com"));
 
 const beData = {
   cryptocurrencyAddress: "rwt65q8et5q8etqtqwtqetqe",
@@ -9,7 +9,7 @@ const beData = {
   lastName: "Bond",
   email: "James@gmail.com",
   phoneCountryCode: 31,
-  // phoneNumber: 12345678,
+  //   phoneNumber: 12345678,
   street: "Test street",
   town: "Test town",
   postCode: "123578",
@@ -21,9 +21,6 @@ const beData = {
   ccCVV: "435",
   termsOfUse: true,
 };
-// const validator = new OnramperValidator();
-// validator.validateAll(beData);
-// console.log(validator.getErrorMessages());
 
 class DecoratorTest {
   @validate
