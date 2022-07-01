@@ -1,13 +1,19 @@
 import { OnramperValidator, isValidData, validate, Gateway } from "../src";
 
 // const validator = new OnramperValidator();
+<<<<<<< HEAD
+// console.log(
+//   validator.validateField("email", "abcdg@mail.com", Gateway.Moonpay)
+// );
+=======
 // console.log(validator.validateField("email", "abcdg@mail.com"));
+>>>>>>> master
 
 const beData = {
   cryptocurrencyAddress: "rwt65q8et5q8etqtqwtqetqe",
   firstName: "James",
   lastName: "Bond",
-  email: "James@gmail.com",
+  email: "Jamesgmail.com",
   phoneCountryCode: 31,
   //   phoneNumber: 12345678,
   street: "Test street",
@@ -24,10 +30,10 @@ const beData = {
 
 class DecoratorTest {
   @validate
-  decoratorTest(@isValidData data: any) {
+  controllerMethod(@isValidData data: any) {
     console.log("RUNNING METHOD LOGIC");
   }
 }
 
 const decorator = new DecoratorTest();
-decorator.decoratorTest(beData);
+decorator.controllerMethod(beData);
