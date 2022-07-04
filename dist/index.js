@@ -2937,8 +2937,7 @@ class OnramperValidator {
         else {
             return;
         }
-        if (this.messagesShown || this.visibleFields.includes(field))
-            return element;
+        return element;
     }
     validateAll(data, gateway) {
         const rules = gateway
