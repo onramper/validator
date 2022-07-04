@@ -2904,7 +2904,7 @@ class OnramperValidator {
         this.messagesShown = false;
         if (typeof navigator === "object") {
             this.element = (message, className) => react_1.default.createElement("div", {
-                className: className || options.className || "validation-message",
+                className: className || (options === null || options === void 0 ? void 0 : options.className) || "validation-message",
             }, message);
         }
         else {

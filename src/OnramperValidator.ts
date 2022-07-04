@@ -47,7 +47,7 @@ export class OnramperValidator {
         React.createElement(
           "div",
           {
-            className: className || options.className || "validation-message",
+            className: className || options?.className || "validation-message",
           },
           message
         );
