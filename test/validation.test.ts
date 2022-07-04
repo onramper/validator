@@ -1,13 +1,7 @@
 import { OnramperValidator, isValidData, validate, Gateway } from "../src";
 
 // const validator = new OnramperValidator();
-<<<<<<< HEAD
-// console.log(
-//   validator.validateField("email", "abcdg@mail.com", Gateway.Moonpay)
-// );
-=======
 // console.log(validator.validateField("email", "abcdg@mail.com"));
->>>>>>> master
 
 const beData = {
   cryptocurrencyAddress: "rwt65q8et5q8etqtqwtqetqe",
