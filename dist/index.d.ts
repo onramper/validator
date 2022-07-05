@@ -1,2 +1,2 @@
-export { Gateway, IRules, IRule, ValidationStatus, OnramperValidator, } from "./OnramperValidator";
-export { isValidData, validate } from "./IsValidDataDecorator";
+export * from "./OnramperValidator";
+export * from "./IsValidDataDecorator";
