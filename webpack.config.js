@@ -17,21 +17,21 @@ module.exports = {
       },
     ],
   },
-  resolve: { extensions: [".ts"] },
+  resolve: { extensions: [".ts", ".js"] },
   output: {
     path: path.resolve(__dirname, "dist"),
-    chunkFilename: "[name].js",
-    filename: "[name].js",
+    chunkFilename: "validator.js",
+    filename: "validator.js",
   },
   mode: "production",
   plugins: [
     new CleanWebpackPlugin(),
-    // new webpack.ProvidePlugin({
-    //   Buffer: ["buffer", "Buffer"],
-    // }),
-    // new webpack.ProvidePlugin({
-    //   process: "process/browser",
-    // }),
+    new webpack.ProvidePlugin({
+      Buffer: ["buffer", "Buffer"],
+    }),
+    new webpack.ProvidePlugin({
+      process: "process/browser",
+    }),
     // new webpack.optimize.UglifyJsPlugin({
     //   minimize: true,
     //   sourceMap: true,
