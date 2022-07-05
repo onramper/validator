@@ -1,5 +1,5 @@
 export function testRegex(value: any, regex: any) {
-  return value.toString().match(regex) !== null;
+  return value?.toString().match(regex) !== null;
 }
 
 export function isBlank(value: string) {

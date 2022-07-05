@@ -86,7 +86,20 @@ export class OnramperValidator {
     this.messagesShown = false;
   }
 
-  validateField(field: any, inputValue: any, gateway?: Gateway) {
+  allValid() {
+    for (let key in this.fields) {
+      if (this.fieldValid(key) === false) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  fieldValid(field: string) {
+    return this.fields.hasOwnProperty(field) && this.fields[field] === true;
+  }
+
+  message(field: any, inputValue: any, gateway?: Gateway) {
     const rules = gateway
       ? { ...this.rules.DEFAULT, ...this.rules[gateway!] }
       : this.rules.DEFAULT;

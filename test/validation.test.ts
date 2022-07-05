@@ -1,7 +1,7 @@
 import { OnramperValidator, isValidData, validate, Gateway } from "../src";
 
 const validator = new OnramperValidator();
-console.log(validator.validateField("email", "abcdgmail.com"));
+console.log(validator.message("email", "abcdgmail.com"));
 
 // const beData = {
 //   cryptocurrencyAddress: "rwt65q8et5q8etqtqwtqetqe",

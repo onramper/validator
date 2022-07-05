@@ -2,36 +2,59 @@ import * as helpers from "../helpers";
 
 export const defaultRules = {
     required: {
-      message: "The :attribute field is required.",
+      message: "The :attribute is required.",
       validate: (val: any) => !helpers.isBlank(val),
     },
     email: {
-      message: "The :attribute must be a valid email address.",
+      message: "Please enter a valid email address.",
       validate: (val: any) => helpers.testRegex(val,/^[A-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i),
     },
     firstName: {
-      message: "The :attribute must be a string.",
-      validate: (val: any) => typeof val === typeof "string",
+      message: "Please enter a valid :attribute.",
+      validate: (val: any) => helpers.testRegex(val,/^[a-zA-Z ]{2,30}$/),
     },
     lastName: {
-      message: "The :attribute must be a string.",
-      validate: (val: any) => typeof val === typeof "string",
+      message: "Please enter a valid :attribute.",
+      validate: (val: any) => helpers.testRegex(val,/^[a-zA-Z ]{2,30}$/),
+    },
+    cryptocurrencyAddress: {
+      message: "Please enter a valid wallet address.",
+      validate: (val: any) => !helpers.isBlank(val),
     },
     currency: {
       message: "The :attribute must be a valid currency.",
       validate: (val: any) => helpers.testRegex(val, /^[\$£€¥]?(\d{1,3})(\,?\d{3})*\.?\d{0,2}$/),
     },
+    street: {
+      message: "Please enter a valid :attribute.",
+      validate: (val: any) => helpers.testRegex(val, /d{1,5}\s\w.\s(\b\w*\b\s){1,2}\w*/),
+    },
     phoneNumber: {
-      message: "The :attribute must be a valid phone number.",
+      message: "Please enter a valid :attribute.",
       validate: (val: any) => helpers.testRegex(val, /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)$/) && !helpers.testRegex(val, /^\b(\d)\1{8,}\b$/),
     },
     card_exp: {
-      message: "The :attribute must be a valid expiration date.",
+      message: "Please enter a valid expiration date.",
       validate: (val: any) => helpers.testRegex(val, /^(([0]?[1-9]{1})|([1]{1}[0-2]{1}))\s?\/\s?(\d{2}|\d{4})$/),
     },
-    card_num: {
-      message: "The :attribute must be a valid credit card number.",
+    ccNumber: {
+      message: "Please enter a valid credit card number.",
       validate: (val: any) =>
         helpers.testRegex(val, /^\d{4}\s?\d{4,6}\s?\d{4,5}\s?\d{0,8}$/),
+    },
+    ccMonth: {
+      message: "Please enter a valid month.",
+      validate: (val: any) =>
+        helpers.testRegex(val, /^\d{4}\s?\d{4,6}\s?\d{4,5}\s?\d{0,8}$/),
+    },
+    ccYear: {
+      message: "Please enter a valid year address.",
+      validate: (val: any) =>
+        helpers.testRegex(val, /^\d{4}\s?\d{4,6}\s?\d{4,5}\s?\d{0,8}$/),
+    },
+    ccCVV: {
+      message: "Please enter a valid cvv.",
+      validate: (val: any) =>
+        helpers.testRegex(val, /^[0-9]{3, 4}$/),
     },
   }
