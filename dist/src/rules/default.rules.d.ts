@@ -15,7 +15,15 @@ export declare const defaultRules: {
         message: string;
         validate: (val: any) => boolean;
     };
+    cryptocurrencyAddress: {
+        message: string;
+        validate: (val: any) => any;
+    };
     currency: {
+        message: string;
+        validate: (val: any) => boolean;
+    };
+    street: {
         message: string;
         validate: (val: any) => boolean;
     };
@@ -23,11 +31,19 @@ export declare const defaultRules: {
         message: string;
         validate: (val: any) => boolean;
     };
-    card_exp: {
+    ccNumber: {
         message: string;
         validate: (val: any) => boolean;
     };
-    card_num: {
+    ccMonth: {
+        message: string;
+        validate: (val: any) => boolean;
+    };
+    ccYear: {
+        message: string;
+        validate: (val: any) => boolean;
+    };
+    ccCVV: {
         message: string;
         validate: (val: any) => boolean;
     };

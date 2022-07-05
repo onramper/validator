@@ -32,7 +32,9 @@ export declare class OnramperValidator {
     showMessageFor: (field: string) => void;
     hideMessageFor: (field: string) => void;
     hideMessages(): void;
-    validateField(field: any, inputValue: any, gateway?: Gateway): any;
+    allValid(): boolean;
+    fieldValid(field: string): any;
+    message(field: any, inputValue: any, gateway?: Gateway): any;
     validateAll(data: any, gateway?: Gateway): void;
     private checkValidity;
 }

@@ -19,7 +19,7 @@ export const defaultRules = {
     },
     cryptocurrencyAddress: {
       message: "Please enter a valid wallet address.",
-      validate: (val: any) => !helpers.isBlank(val),
+      validate: (val: any) => helpers.validateWalletAddress(val),
     },
     currency: {
       message: "The :attribute must be a valid currency.",
@@ -33,10 +33,6 @@ export const defaultRules = {
       message: "Please enter a valid :attribute.",
       validate: (val: any) => helpers.testRegex(val, /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)$/) && !helpers.testRegex(val, /^\b(\d)\1{8,}\b$/),
     },
-    card_exp: {
-      message: "Please enter a valid expiration date.",
-      validate: (val: any) => helpers.testRegex(val, /^(([0]?[1-9]{1})|([1]{1}[0-2]{1}))\s?\/\s?(\d{2}|\d{4})$/),
-    },
     ccNumber: {
       message: "Please enter a valid credit card number.",
       validate: (val: any) =>
@@ -45,12 +41,12 @@ export const defaultRules = {
     ccMonth: {
       message: "Please enter a valid month.",
       validate: (val: any) =>
-        helpers.testRegex(val, /^\d{4}\s?\d{4,6}\s?\d{4,5}\s?\d{0,8}$/),
+        helpers.testRegex(val, /^(0[1-9]|1[0-2])/),
     },
     ccYear: {
       message: "Please enter a valid year address.",
       validate: (val: any) =>
-        helpers.testRegex(val, /^\d{4}\s?\d{4,6}\s?\d{4,5}\s?\d{0,8}$/),
+        helpers.testRegex(val,/^([0-9]{4}|[0-9]{2})$/),
     },
     ccCVV: {
       message: "Please enter a valid cvv.",

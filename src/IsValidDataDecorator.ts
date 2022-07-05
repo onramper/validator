@@ -5,7 +5,6 @@ export function isValidData(
   propertyKey: string,
   parameterIndex: number
 ) {
-  console.log("param decorator function invoked ");
   Validator.registerNotNull(target, propertyKey, parameterIndex);
 }
 
@@ -14,11 +13,12 @@ export function validate(
   propertyKey: string,
   descriptor: PropertyDescriptor
 ) {
-  console.log("method decorator validate function invoked ");
   let originalMethod = descriptor.value;
   descriptor.value = function (...args: any[]) {
-    if (!Validator.performValidation(target, propertyKey, args)) {
-      throw new Error("Parameters are not valid.");
+    const errors = Validator.performValidation(target, propertyKey, args);
+    if (typeof errors === "object") {
+      debugger;
+      throw new Error(JSON.stringify(errors));
     }
     let result = originalMethod.apply(this, args);
     return result;
@@ -52,7 +52,7 @@ class Validator {
     target: any,
     methodName: string,
     paramValues: any[]
-  ): boolean {
+  ): any {
     let notNullMethodMap: Map<string, number[]> | undefined =
       this.notNullValidatorMap.get(target);
     if (!notNullMethodMap) {
@@ -67,7 +67,7 @@ class Validator {
       const validator = new OnramperValidator();
       validator.validateAll(paramValues[0]);
       const errors = validator.getErrorMessages();
-      if (Object.keys(errors).length !== 0) hasErrors = true;
+      if (Object.keys(errors).length !== 0) return errors;
     }
     return !hasErrors;
   }
