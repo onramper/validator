@@ -17,7 +17,7 @@ export declare const defaultRules: {
     };
     cryptocurrencyAddress: {
         message: string;
-        validate: (val: any) => any;
+        validate: (val: any) => boolean;
     };
     currency: {
         message: string;

@@ -17,20 +17,41 @@ module.exports = {
       },
     ],
   },
-  resolve: { extensions: [".ts", ".js"] },
+  resolve: { extensions: [".ts"] },
   output: {
+    path: path.resolve(__dirname, "dist"),
     chunkFilename: "[name].js",
     filename: "[name].js",
   },
-  mode: "development",
+  mode: "production",
   plugins: [
     new CleanWebpackPlugin(),
-    new webpack.ProvidePlugin({
-      Buffer: ["buffer", "Buffer"],
-    }),
-    new webpack.ProvidePlugin({
-      process: "process/browser",
-    }),
+    // new webpack.ProvidePlugin({
+    //   Buffer: ["buffer", "Buffer"],
+    // }),
+    // new webpack.ProvidePlugin({
+    //   process: "process/browser",
+    // }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   minimize: true,
+    //   sourceMap: true,
+    //   include: /\.min\.js$/,
+    // }),
   ],
   devtool: "source-map",
+  // optimization: {
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       vendors: {
+  //         priority: -10,
+  //         test: /[\\/]node_modules[\\/]/,
+  //       },
+  //     },
+
+  //     chunks: "async",
+  //     minChunks: 1,
+  //     minSize: 30000,
+  //     name: true,
+  //   },
+  // },
 };

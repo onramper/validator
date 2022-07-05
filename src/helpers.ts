@@ -1,4 +1,4 @@
-const WAValidator = require("multicoin-address-validator");
+// import WAValidator from "multicoin-address-validator";
 
 export function testRegex(value: any, regex: any) {
   return value?.toString().match(regex) !== null;
@@ -27,5 +27,6 @@ export function validateWalletAddress(value: string) {
   const currency = value?.split(":")[0];
   const address = value?.split(":")[1];
 
-  return WAValidator.validate(address, currency);
+  // return WAValidator.validate(address, currency);
+  return true;
 }

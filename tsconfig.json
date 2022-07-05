@@ -11,6 +11,9 @@
     "strict": true,
     "skipLibCheck": true,
     "experimentalDecorators": true,
-    "declaration": true
-  }
+    "declaration": true,
+    "allowJs": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
