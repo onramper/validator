@@ -23,6 +23,14 @@ module.exports = {
     filename: "[name].js",
   },
   mode: "development",
-  plugins: [new CleanWebpackPlugin()],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new webpack.ProvidePlugin({
+      Buffer: ["buffer", "Buffer"],
+    }),
+    new webpack.ProvidePlugin({
+      process: "process/browser",
+    }),
+  ],
   devtool: "source-map",
 };
