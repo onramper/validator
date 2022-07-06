@@ -17,7 +17,6 @@ export function validate(
   descriptor.value = function (...args: any[]) {
     const errors = Validator.performValidation(target, propertyKey, args);
     if (typeof errors === "object") {
-      debugger;
       throw new Error(JSON.stringify(errors));
     }
     let result = originalMethod.apply(this, args);

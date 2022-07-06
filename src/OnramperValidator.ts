@@ -1,5 +1,5 @@
 import { rules } from "./rules";
-import React from "react";
+// import React from "react";
 import * as helpers from "./helpers";
 
 export enum Gateway {
@@ -42,18 +42,18 @@ export class OnramperValidator {
     this.className = options?.className;
     this.messagesShown = false;
 
-    if (typeof navigator === "object") {
-      this.element = (message: any, className: any) =>
-        React.createElement(
-          "div",
-          {
-            className: className || options?.className || "validation-message",
-          },
-          message
-        );
-    } else {
-      this.element = (message: any) => message;
-    }
+    // if (typeof navigator === "object") {
+    // this.element = (message: any, className: any) =>
+    //   React.createElement(
+    //     "div",
+    //     {
+    //       className: className || options?.className || "validation-message",
+    //     },
+    //     message
+    //   );
+    // } else {
+    this.element = (message: any) => message;
+    // }
   }
 
   getErrorMessages() {
@@ -96,7 +96,11 @@ export class OnramperValidator {
   }
 
   fieldValid(field: string) {
-    return this.fields.hasOwnProperty(field) && this.fields[field] === true;
+    return (
+      this.visibleFields.includes(field) &&
+      this.fields.hasOwnProperty(field) &&
+      this.fields[field] === true
+    );
   }
 
   message(field: any, inputValue: any, gateway?: Gateway) {

@@ -29,6 +29,14 @@ export const defaultRules = {
       message: "Please enter a valid :attribute.",
       validate: (val: any) => helpers.testRegex(val, /d{1,5}\s\w.\s(\b\w*\b\s){1,2}\w*/),
     },
+    town: {
+      message: "Please enter a valid :attribute.",
+      validate: (val: any) => helpers.testRegex(val, /d{1,5}\s\w.\s(\b\w*\b\s){1,2}\w*/),
+    },
+    postCode: {
+      message: "Please enter a valid :attribute.",
+      validate: (val: any) => helpers.testRegex(val, /d{1,5}\s\w.\s(\b\w*\b\s){1,2}\w*/),
+    },
     phoneNumber: {
       message: "Please enter a valid :attribute.",
       validate: (val: any) => helpers.testRegex(val, /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)$/) && !helpers.testRegex(val, /^\b(\d)\1{8,}\b$/),

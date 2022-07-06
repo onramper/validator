@@ -27,6 +27,14 @@ export declare const defaultRules: {
         message: string;
         validate: (val: any) => boolean;
     };
+    town: {
+        message: string;
+        validate: (val: any) => boolean;
+    };
+    postCode: {
+        message: string;
+        validate: (val: any) => boolean;
+    };
     phoneNumber: {
         message: string;
         validate: (val: any) => boolean;
