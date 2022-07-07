@@ -35,7 +35,7 @@ exports.defaultRules = {
         validate: function (val) { return helpers.testRegex(val, /^[A-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i); },
     },
     password: {
-        message: "Password required.",
+        message: "Password is required.",
         validate: function (val) { return !helpers.isBlank(val); },
     },
     firstName: {
