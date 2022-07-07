@@ -1,5 +1,7 @@
+import WAValidator from "multicoin-address-validator";
+
 export function testRegex(value: any, regex: any) {
-  return value.toString().match(regex) !== null;
+  return value?.toString().match(regex) !== null;
 }
 
 export function isBlank(value: string) {
@@ -19,4 +21,16 @@ export function humanizeFieldName(field: string) {
 
 export function modifyMessage(field: string, message: string) {
   return message.replace(":attribute", humanizeFieldName(field));
+}
+
+export function validateWalletAddress(value: string) {
+  const [currency, address] = value?.split(":");
+  if (currency && address) return WAValidator.validate(address, currency);
+  return false;
+}
+
+export function isPastYear(year: string) {
+  const currentYear = new Date().getFullYear().toString().substr(-2);
+  if (year < currentYear) return true;
+  return false;
 }

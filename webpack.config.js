@@ -17,12 +17,41 @@ module.exports = {
       },
     ],
   },
-  resolve: { extensions: [".ts"] },
+  resolve: { extensions: [".ts", ".js"] },
   output: {
-    chunkFilename: "[name].js",
-    filename: "[name].js",
+    path: path.resolve(__dirname, "dist"),
+    chunkFilename: "validator.js",
+    filename: "validator.js",
   },
-  mode: "development",
-  plugins: [new CleanWebpackPlugin()],
-  devtool: "source-map",
+  mode: "production",
+  plugins: [
+    new CleanWebpackPlugin(),
+    new webpack.ProvidePlugin({
+      Buffer: ["buffer", "Buffer"],
+    }),
+    new webpack.ProvidePlugin({
+      process: "process/browser",
+    }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   minimize: true,
+    //   sourceMap: true,
+    //   include: /\.min\.js$/,
+    // }),
+  ],
+  devtool: "inline-source-map",
+  // optimization: {
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       vendors: {
+  //         priority: -10,
+  //         test: /[\\/]node_modules[\\/]/,
+  //       },
+  //     },
+
+  //     chunks: "async",
+  //     minChunks: 1,
+  //     minSize: 30000,
+  //     name: true,
+  //   },
+  // },
 };

@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es5",
     "lib": ["dom", "es6"],
-    "module": "commonjs",
+    "module": "commonJs", //es6
     "sourceMap": true,
     "outDir": "./dist",
     "removeComments": true,
@@ -11,6 +11,11 @@
     "strict": true,
     "skipLibCheck": true,
     "experimentalDecorators": true,
-    "declaration": true
-  }
+    "declaration": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "noImplicitAny": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
