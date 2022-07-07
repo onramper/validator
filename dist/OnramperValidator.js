@@ -1,3 +1,4 @@
+"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -9,20 +10,45 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import { rules } from "./rules";
-import * as helpers from "./helpers";
-export var Gateway;
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.OnramperValidator = exports.ValidationStatus = exports.Gateway = void 0;
+var rules_1 = require("./rules");
+var helpers = __importStar(require("./helpers"));
+var Gateway;
 (function (Gateway) {
     Gateway["Default"] = "DEFAULT";
     Gateway["Moonpay"] = "MOONPAY";
     Gateway["Wyre"] = "WYRE";
-})(Gateway || (Gateway = {}));
-export var ValidationStatus;
+})(Gateway = exports.Gateway || (exports.Gateway = {}));
+var ValidationStatus;
 (function (ValidationStatus) {
     ValidationStatus[ValidationStatus["VALID"] = 0] = "VALID";
     ValidationStatus[ValidationStatus["INVALID"] = 1] = "INVALID";
     ValidationStatus[ValidationStatus["NOT_AVAILABLE"] = 2] = "NOT_AVAILABLE";
-})(ValidationStatus || (ValidationStatus = {}));
+})(ValidationStatus = exports.ValidationStatus || (exports.ValidationStatus = {}));
 var OnramperValidator = (function () {
     function OnramperValidator(options) {
         var _this = this;
@@ -39,7 +65,7 @@ var OnramperValidator = (function () {
         };
         this.fields = {};
         this.errorMessages = {};
-        this.rules = rules;
+        this.rules = rules_1.rules;
         this.visibleFields = [];
         this.className = options === null || options === void 0 ? void 0 : options.className;
         this.messagesShown = false;
@@ -104,7 +130,7 @@ var OnramperValidator = (function () {
     };
     OnramperValidator.prototype.checkValidity = function (field, inputValue, rules) {
         if (rules === null || rules === void 0 ? void 0 : rules.hasOwnProperty(field))
-            if (rules[field].validate(inputValue))
+            if (!helpers.isBlank(inputValue) && rules[field].validate(inputValue))
                 return ValidationStatus.VALID;
             else
                 return ValidationStatus.INVALID;
@@ -112,5 +138,5 @@ var OnramperValidator = (function () {
     };
     return OnramperValidator;
 }());
-export { OnramperValidator };
+exports.OnramperValidator = OnramperValidator;
 //# sourceMappingURL=OnramperValidator.js.map

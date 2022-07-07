@@ -7,11 +7,27 @@ export declare const defaultRules: {
         message: string;
         validate: (val: any) => boolean;
     };
+    password: {
+        message: string;
+        validate: (val: any) => boolean;
+    };
     firstName: {
         message: string;
         validate: (val: any) => boolean;
     };
     lastName: {
+        message: string;
+        validate: (val: any) => boolean;
+    };
+    verifyPhoneCode: {
+        message: string;
+        validate: (val: any) => boolean;
+    };
+    verifyEmailCode: {
+        message: string;
+        validate: (val: any) => boolean;
+    };
+    verifyCreditCard: {
         message: string;
         validate: (val: any) => boolean;
     };

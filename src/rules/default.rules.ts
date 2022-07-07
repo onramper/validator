@@ -9,13 +9,29 @@ export const defaultRules = {
       message: "Please enter a valid email address.",
       validate: (val: any) => helpers.testRegex(val,/^[A-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i),
     },
+    password: {
+      message: "Password is required.",
+      validate: (val: any) => !helpers.isBlank(val),
+    },
     firstName: {
       message: "Please enter a valid :attribute.",
-      validate: (val: any) => helpers.testRegex(val,/^[a-zA-Z ]{2,30}$/),
+      validate: (val: any) => helpers.testRegex(val,/\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/),
     },
     lastName: {
       message: "Please enter a valid :attribute.",
-      validate: (val: any) => helpers.testRegex(val,/^[a-zA-Z ]{2,30}$/),
+      validate: (val: any) => helpers.testRegex(val,/\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/),
+    },
+    verifyPhoneCode: {
+      message: "Please enter a valid verification code.",
+      validate: (val: any) => helpers.testRegex(val,/^([0-9]{6})$/),
+    },
+    verifyEmailCode: {
+      message: "Please enter a valid verification code.",
+      validate: (val: any) => helpers.testRegex(val,/^([0-9]{6})$/),
+    },
+    verifyCreditCard: {
+      message: "Please enter a valid verification code.",
+      validate: (val: any) => helpers.testRegex(val,/^([0-9]{6})$/),
     },
     cryptocurrencyAddress: {
       message: "Please enter a valid wallet address.",
@@ -27,15 +43,15 @@ export const defaultRules = {
     },
     street: {
       message: "Please enter a valid :attribute.",
-      validate: (val: any) => helpers.testRegex(val, /d{1,5}\s\w.\s(\b\w*\b\s){1,2}\w*/),
+      validate: (val: any) => helpers.testRegex(val, /^[a-zA-Z0-9\s,'-]*$/),
     },
     town: {
       message: "Please enter a valid :attribute.",
-      validate: (val: any) => helpers.testRegex(val, /d{1,5}\s\w.\s(\b\w*\b\s){1,2}\w*/),
+      validate: (val: any) => helpers.testRegex(val, /^(?:[A-Za-z]{2,}(?:(\.\s|'s\s|\s?-\s?|\s)?(?=[A-Za-z]+))){1,2}(?:[A-Za-z]+)?$/),
     },
     postCode: {
       message: "Please enter a valid :attribute.",
-      validate: (val: any) => helpers.testRegex(val, /d{1,5}\s\w.\s(\b\w*\b\s){1,2}\w*/),
+      validate: (val: any) => helpers.testRegex(val, /^[A-Z0-9_-]*$/),
     },
     phoneNumber: {
       message: "Please enter a valid :attribute.",
@@ -52,13 +68,13 @@ export const defaultRules = {
         helpers.testRegex(val, /^(0[1-9]|1[0-2])/),
     },
     ccYear: {
-      message: "Please enter a valid year address.",
+      message: "Please enter a valid year.",
       validate: (val: any) =>
-        helpers.testRegex(val,/^([0-9]{4}|[0-9]{2})$/),
+        helpers.testRegex(val,/^([0-9]{2})$/) && !helpers.isPastYear(val),
     },
     ccCVV: {
       message: "Please enter a valid cvv.",
       validate: (val: any) =>
-        helpers.testRegex(val, /^[0-9]{3, 4}$/),
+        helpers.testRegex(val, /^([0-9]{3})$/),
     },
   }

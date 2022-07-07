@@ -24,9 +24,13 @@ export function modifyMessage(field: string, message: string) {
 }
 
 export function validateWalletAddress(value: string) {
-  const currency = value?.split(":")[0];
-  const address = value?.split(":")[1];
+  const [currency, address] = value?.split(":");
+  if (currency && address) return WAValidator.validate(address, currency);
+  return false;
+}
 
-  return WAValidator.validate(address, currency);
-  // return true;
+export function isPastYear(year: string) {
+  const currentYear = new Date().getFullYear().toString().substr(-2);
+  if (year < currentYear) return true;
+  return false;
 }

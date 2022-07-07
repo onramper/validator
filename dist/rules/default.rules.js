@@ -1,5 +1,31 @@
-import * as helpers from "../helpers";
-export var defaultRules = {
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.defaultRules = void 0;
+var helpers = __importStar(require("../helpers"));
+exports.defaultRules = {
     required: {
         message: "The :attribute is required.",
         validate: function (val) { return !helpers.isBlank(val); },
@@ -8,13 +34,29 @@ export var defaultRules = {
         message: "Please enter a valid email address.",
         validate: function (val) { return helpers.testRegex(val, /^[A-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i); },
     },
+    password: {
+        message: "Password required.",
+        validate: function (val) { return !helpers.isBlank(val); },
+    },
     firstName: {
         message: "Please enter a valid :attribute.",
-        validate: function (val) { return helpers.testRegex(val, /^[a-zA-Z ]{2,30}$/); },
+        validate: function (val) { return helpers.testRegex(val, /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/); },
     },
     lastName: {
         message: "Please enter a valid :attribute.",
-        validate: function (val) { return helpers.testRegex(val, /^[a-zA-Z ]{2,30}$/); },
+        validate: function (val) { return helpers.testRegex(val, /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/); },
+    },
+    verifyPhoneCode: {
+        message: "Please enter a valid verification code.",
+        validate: function (val) { return helpers.testRegex(val, /^([0-9]{6})$/); },
+    },
+    verifyEmailCode: {
+        message: "Please enter a valid verification code.",
+        validate: function (val) { return helpers.testRegex(val, /^([0-9]{6})$/); },
+    },
+    verifyCreditCard: {
+        message: "Please enter a valid verification code.",
+        validate: function (val) { return helpers.testRegex(val, /^([0-9]{6})$/); },
     },
     cryptocurrencyAddress: {
         message: "Please enter a valid wallet address.",
@@ -26,15 +68,15 @@ export var defaultRules = {
     },
     street: {
         message: "Please enter a valid :attribute.",
-        validate: function (val) { return helpers.testRegex(val, /d{1,5}\s\w.\s(\b\w*\b\s){1,2}\w*/); },
+        validate: function (val) { return helpers.testRegex(val, /^[a-zA-Z0-9\s,'-]*$/); },
     },
     town: {
         message: "Please enter a valid :attribute.",
-        validate: function (val) { return helpers.testRegex(val, /d{1,5}\s\w.\s(\b\w*\b\s){1,2}\w*/); },
+        validate: function (val) { return helpers.testRegex(val, /^(?:[A-Za-z]{2,}(?:(\.\s|'s\s|\s?-\s?|\s)?(?=[A-Za-z]+))){1,2}(?:[A-Za-z]+)?$/); },
     },
     postCode: {
         message: "Please enter a valid :attribute.",
-        validate: function (val) { return helpers.testRegex(val, /d{1,5}\s\w.\s(\b\w*\b\s){1,2}\w*/); },
+        validate: function (val) { return helpers.testRegex(val, /^[A-Z0-9_-]*$/); },
     },
     phoneNumber: {
         message: "Please enter a valid :attribute.",
@@ -53,15 +95,15 @@ export var defaultRules = {
         },
     },
     ccYear: {
-        message: "Please enter a valid year address.",
+        message: "Please enter a valid year.",
         validate: function (val) {
-            return helpers.testRegex(val, /^([0-9]{4}|[0-9]{2})$/);
+            return helpers.testRegex(val, /^([0-9]{2})$/) && !helpers.isPastYear(val);
         },
     },
     ccCVV: {
         message: "Please enter a valid cvv.",
         validate: function (val) {
-            return helpers.testRegex(val, /^[0-9]{3, 4}$/);
+            return helpers.testRegex(val, /^([0-9]{3})$/);
         },
     },
 };

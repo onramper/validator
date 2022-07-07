@@ -156,7 +156,8 @@ export class OnramperValidator {
 
   private checkValidity(field: string, inputValue: any, rules: any) {
     if (rules?.hasOwnProperty(field))
-      if (rules[field].validate(inputValue)) return ValidationStatus.VALID;
+      if (!helpers.isBlank(inputValue) && rules[field].validate(inputValue))
+        return ValidationStatus.VALID;
       else return ValidationStatus.INVALID;
     return ValidationStatus.NOT_AVAILABLE;
   }

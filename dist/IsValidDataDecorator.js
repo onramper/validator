@@ -1,8 +1,12 @@
-import { OnramperValidator } from "./OnramperValidator";
-export function isValidData(target, propertyKey, parameterIndex) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.validate = exports.isValidData = void 0;
+var OnramperValidator_1 = require("./OnramperValidator");
+function isValidData(target, propertyKey, parameterIndex) {
     Validator.registerNotNull(target, propertyKey, parameterIndex);
 }
-export function validate(target, propertyKey, descriptor) {
+exports.isValidData = isValidData;
+function validate(target, propertyKey, descriptor) {
     var originalMethod = descriptor.value;
     descriptor.value = function () {
         var args = [];
@@ -17,6 +21,7 @@ export function validate(target, propertyKey, descriptor) {
         return result;
     };
 }
+exports.validate = validate;
 var Validator = (function () {
     function Validator() {
     }
@@ -44,7 +49,7 @@ var Validator = (function () {
         }
         var hasErrors = false;
         if (paramValues === null || paramValues === void 0 ? void 0 : paramValues[0]) {
-            var validator = new OnramperValidator();
+            var validator = new OnramperValidator_1.OnramperValidator();
             validator.validateAll(paramValues[0]);
             var errors = validator.getErrorMessages();
             if (Object.keys(errors).length !== 0)

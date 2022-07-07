@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "es6"],
-    "module": "es6",
+    "module": "commonJs", //es6
     "sourceMap": true,
     "outDir": "./dist",
     "removeComments": true,
