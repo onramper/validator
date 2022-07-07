@@ -15,11 +15,11 @@ export const defaultRules = {
     },
     firstName: {
       message: "Please enter a valid :attribute.",
-      validate: (val: any) => helpers.testRegex(val,/\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/),
+      validate: (val: any) => helpers.testRegex(val,/^[A-Za-z ,.'-]+$/i),
     },
     lastName: {
       message: "Please enter a valid :attribute.",
-      validate: (val: any) => helpers.testRegex(val,/\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/),
+      validate: (val: any) => helpers.testRegex(val,/^[A-Za-z ,.'-]+$/i),
     },
     verifyPhoneCode: {
       message: "Please enter a valid verification code.",

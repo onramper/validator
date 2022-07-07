@@ -40,11 +40,11 @@ exports.defaultRules = {
     },
     firstName: {
         message: "Please enter a valid :attribute.",
-        validate: function (val) { return helpers.testRegex(val, /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/); },
+        validate: function (val) { return helpers.testRegex(val, /^[A-Za-z ,.'-]+$/i); },
     },
     lastName: {
         message: "Please enter a valid :attribute.",
-        validate: function (val) { return helpers.testRegex(val, /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/); },
+        validate: function (val) { return helpers.testRegex(val, /^[A-Za-z ,.'-]+$/i); },
     },
     verifyPhoneCode: {
         message: "Please enter a valid verification code.",
