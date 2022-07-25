@@ -24,8 +24,9 @@ export function modifyMessage(field: string, message: string) {
 }
 
 export function validateWalletAddress(value: string) {
-  const [currency, address] = value?.split(":");
-  if (currency && address) return WAValidator.validate(address, currency);
+  const [currency, address, networkType = "prod"] = value?.split(":");
+  if (currency && address)
+    return WAValidator.validate(address, currency, networkType);
   return false;
 }
 

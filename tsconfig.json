@@ -2,9 +2,9 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "es6"],
-    "module": "commonJs", //es6
+    "module": "commonJs",
     "sourceMap": true,
-    "outDir": "./dist",
+    "outDir": "./build",
     "removeComments": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
