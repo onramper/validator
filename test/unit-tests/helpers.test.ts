@@ -14,7 +14,7 @@ it("should be a validate wallet address when network type is provided as testnet
   expect(isValid).toBe(true);
 });
 
-// it("should return false when a past year is provided", () => {
-//   const isValid = helpers.isPastYear("20");
-//   expect(isValid).toBe(true);
-// });
+it("should return false when a past year is provided", () => {
+  const isValid = helpers.isPastYear("20");
+  expect(isValid).toBe(true);
+});
