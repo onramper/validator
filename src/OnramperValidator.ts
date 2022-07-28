@@ -25,11 +25,11 @@ export type IRules = {
 };
 
 export class OnramperValidator {
-  fields: any;
-  errorMessages: any;
+  fields: { [key: string]: boolean };
+  errorMessages: { [key: string]: string };
   rules: IRules;
   element: any;
-  visibleFields: any;
+  visibleFields: Array<string>;
   messagesShown: boolean;
   className: string;
 
@@ -90,7 +90,7 @@ export class OnramperValidator {
     );
   }
 
-  message(field: any, inputValue: any, gateway?: Gateway) {
+  message(field: string, inputValue: string, gateway?: Gateway) {
     const rules = gateway
       ? { ...this.rules.DEFAULT, ...this.rules[gateway!] }
       : this.rules.DEFAULT;

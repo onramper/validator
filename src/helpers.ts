@@ -1,6 +1,6 @@
 import WAValidator from "multicoin-address-validator";
 
-export function testRegex(value: any, regex: any) {
+export function testRegex(value: string, regex: any) {
   return value?.toString().match(regex) !== null;
 }
 
