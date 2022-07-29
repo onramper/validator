@@ -1,5 +1,4 @@
 import { rules } from "./rules";
-// import React from "react";
 import * as helpers from "./helpers";
 
 export enum Gateway {
@@ -26,11 +25,11 @@ export type IRules = {
 };
 
 export class OnramperValidator {
-  fields: any;
-  errorMessages: any;
+  fields: { [key: string]: boolean };
+  errorMessages: { [key: string]: string };
   rules: IRules;
   element: any;
-  visibleFields: any;
+  visibleFields: Array<string>;
   messagesShown: boolean;
   className: string;
 
@@ -41,19 +40,7 @@ export class OnramperValidator {
     this.visibleFields = [];
     this.className = options?.className;
     this.messagesShown = false;
-
-    // if (typeof navigator === "object") {
-    // this.element = (message: any, className: any) =>
-    //   React.createElement(
-    //     "div",
-    //     {
-    //       className: className || options?.className || "validation-message",
-    //     },
-    //     message
-    //   );
-    // } else {
     this.element = (message: any) => message;
-    // }
   }
 
   getErrorMessages() {
@@ -69,18 +56,18 @@ export class OnramperValidator {
     this.messagesShown = true;
   }
 
-  showMessageFor = (field: string) => {
+  showMessageFor(field: string) {
     if (!this.visibleFields.includes(field)) {
       this.visibleFields.push(field);
     }
-  };
+  }
 
-  hideMessageFor = (field: string) => {
+  hideMessageFor(field: string) {
     const index = this.visibleFields.indexOf(field);
     if (index > -1) {
       this.visibleFields.splice(index, 1);
     }
-  };
+  }
 
   hideMessages() {
     this.messagesShown = false;
@@ -103,7 +90,7 @@ export class OnramperValidator {
     );
   }
 
-  message(field: any, inputValue: any, gateway?: Gateway) {
+  message(field: string, inputValue: string, gateway?: Gateway) {
     const rules = gateway
       ? { ...this.rules.DEFAULT, ...this.rules[gateway!] }
       : this.rules.DEFAULT;
@@ -142,14 +129,8 @@ export class OnramperValidator {
           );
           this.errorMessages[key] = message;
           break;
-        // case ValidationStatus.VALID:
-        //   message = "Valid";
-        //   break;
-        // case ValidationStatus.NOT_AVAILABLE:
-        //   message = "Not available";
-        //   break;
-        // default:
-        //   break;
+        default:
+          break;
       }
     }
   }

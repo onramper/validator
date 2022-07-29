@@ -1,32 +1,38 @@
 {
   "name": "@onramper/validator",
-  "version": "1.0.0",
-  "description": "",
-  "main": "dist/validator.js",
+  "version": "1.0.2",
+  "description": "Validator to validate onrampes form fields",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onramper/validator.git"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack && tsc"
+    "build": "tsc",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "keywords": [],
-  "author": "",
+  "author": "Chamith M",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^28.1.6",
     "@types/multicoin-address-validator": "^0.5.0",
     "@types/node": "^18.0.0",
     "@types/react": "^18.0.14",
-    "@types/webpack": "^5.28.0",
-    "clean-webpack-plugin": "^4.0.0",
-    "copy-webpack-plugin": "^11.0.0",
-    "declaration-bundler-webpack-plugin": "^1.0.3",
+    "jest": "^28.1.3",
+    "ts-jest": "^28.0.7",
     "ts-loader": "^8.0.3",
-    "typescript": "^4.7.4",
-    "webpack": "^5.73.0",
-    "webpack-cli": "^4.10.0"
+    "typescript": "^4.7.4"
   },
   "dependencies": {
     "buffer": "^6.0.3",
     "multicoin-address-validator": "^0.5.10",
     "path": "^0.12.7",
     "ts-node": "^10.8.1"
-  }
+  },
+  "files": [
+    "build"
+  ]
 }
