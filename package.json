@@ -1,7 +1,7 @@
 {
   "name": "@onramper/validator",
-  "version": "1.0.1",
-  "description": "Validate onramper form fields",
+  "version": "1.0.2",
+  "description": "Validator to validate onrampes form fields",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "repository": {

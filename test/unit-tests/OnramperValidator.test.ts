@@ -7,8 +7,16 @@ describe("Onramper Validator Tests", () => {
     validator = new OnramperValidator();
   });
 
-  it("should be a valid first name", () => {
-    validator.message("firstName", "Chamith");
+  it("should be a invalid first name", () => {
+    validator.showMessageFor("firstName");
+    const message = validator.message("firstName", "James1");
+    expect(message).toBe("Please enter a valid first name.");
+  });
+
+  it("should be a invalid email", () => {
+    validator.showMessageFor("email");
+    const message = validator.message("email", "James.com");
+    expect(message).toBe("Please enter a valid email address.");
   });
 
   it("should be a data object", () => {
